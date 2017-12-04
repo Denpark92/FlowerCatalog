@@ -29,20 +29,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'name',
-            'description:ntext',
             [
                 'attribute' => 'genus_id',
                 'value' => $model->genus->name,
             ],
+            'description:ntext',
         ],
     ]) ?>
 
+    <div class="row">
     <?php
     if ($images) {
         foreach ($images as $image) {
-            echo Html::img('@web/upload/catalog/' . $image, ['style' => 'width: 200px;']);
+    ?>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a href="<?= '/web/upload/catalog/' . $image ?>" rel="gallery">
+                <?= Html::img('@web/upload/catalog/' . $image, ['style' => 'max-width: 100%']); ?>
+                </a>
+            </div>
+    <?php
         }
     }
     ?>
+    </div>
 
 </div>

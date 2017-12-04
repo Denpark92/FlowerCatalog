@@ -2,11 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\FlowerImage;
 use Yii;
 use app\models\Flower;
+use app\models\FlowerImage;
 use app\models\FlowerSearch;
 use app\models\Genus;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
@@ -115,11 +116,7 @@ class FlowerController extends Controller
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            $flowerImages = FlowerImage::find()->where(['flower_id' => $id])->all();
-
-            foreach ($flowerImages as $flowerImage) {
-                $images[] = $flowerImage->path;
-            }
+            $images = FlowerImage::find()->where(['flower_id' => $id])->all();
 
             return $this->render('update', [
                 'model' => $model,
@@ -157,18 +154,69 @@ class FlowerController extends Controller
         }
     }
 
+    private function getRandomFileName($path, $extension='') {
+        $extension = $extension ? '.' . $extension : '';
+        $path = $path ? $path . '/' : '';
+
+        do {
+            $name = md5(microtime() . rand(0, 9999));
+            $file = $path . $name . $extension;
+        } while (file_exists($file));
+
+        return $name . $extension;
+    }
+
     private function saveImages($flowerId) {
         if ($_FILES['FlowerImage']) {
-            $flowerImages = new FlowerImage();
-            $flowerImages->path = UploadedFile::getInstances($flowerImages, 'path');
-            foreach ($flowerImages->path as $path) {
+            $paths = UploadedFile::getInstances(new FlowerImage(), 'path');
+            foreach ($paths as $path) {
+                $fileName = $this->getRandomFileName(Yii::getAlias('@app/web/upload/catalog/'), $path->extension);
+                $path->saveAs(Yii::getAlias('@app/web/upload/catalog/') . $fileName);
                 $flowerImage = new FlowerImage();
-                $flowerImage->path = $path;
-                $flowerImage->path->saveAs(Yii::getAlias('@app/web/upload/catalog/').$path->baseName.'.'.$path->extension);
+                $flowerImage->path = $fileName;
                 $flowerImage->main_image = false;
                 $flowerImage->flower_id = $flowerId;
                 $flowerImage->save(false);
             }
         }
+    }
+
+    public function actionDeleteImage($id) {
+        $image = FlowerImage::findOne($id);
+        $flowerId = $image->flower_id;
+        //$imgName = $image->path;
+        //unlink(Yii::getAlias('@web/upload/catalog/').$imgName);
+        if ($image) {
+            $image->delete();
+        }
+
+        return $this->redirect(['update', 'id' => $flowerId]);
+    }
+
+    public function actionMainImage($id, $main = false) {
+        $image = FlowerImage::find()
+            ->andWhere(
+                ['flower_id' => FlowerImage::find()
+                    ->select('flower_id')
+                    ->where(['id' => $id])
+                    ->one()
+                ])
+            ->andWhere(['main_image' => 1])
+            ->one();
+        if ($image) {
+            $image->main_image = 0;
+            $image->update();
+        }
+
+        $image = FlowerImage::findOne($id);
+        $flowerId = $image->flower_id;
+        if ($main) {
+            if ($image) {
+                $image->main_image = 1;
+            }
+            $image->update();
+        }
+
+        return $this->redirect(['update', 'id' => $flowerId]);
     }
 }

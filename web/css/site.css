@@ -113,3 +113,55 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.image_item {
+    position: relative;
+}
+
+.image_item a.btn-danger {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -40px 0 0 -40px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.image_item a.btn-success,
+.image_item a.btn-primary {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 6px 0 0 -68px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.image_item a.btn-primary {
+    margin: 6px 0 0 -71px;
+}
+
+.image_item:hover a {
+    display: block;
+}
+
+.image_item img {
+    box-sizing: border-box;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.image_item.main_image img {
+    border: 3px solid limegreen;
+}
+
+.image_item:hover img {
+    opacity: 0.5;
+}

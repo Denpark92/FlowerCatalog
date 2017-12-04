@@ -13,6 +13,14 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,
+                    'js' => ['https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js']
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'GbaqRLeDG16RQe4aZFbH',
