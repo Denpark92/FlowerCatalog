@@ -18,10 +18,24 @@ body {
 }
 
 .navbar-inverse {
-    background: url('/css/image/nav_bg.jpeg');
-    background-position: 0 -51%;
-    background-size: 100% auto;
+    position: relative;
+    overflow: hidden;
+    background: none;
     border-bottom: 1px solid #521c69;
+}
+
+.navbar-inverse .background {
+    position: absolute;
+    width: 102%;
+    left: 0;
+    margin-top: -30%;
+    margin-left: -1%;
+    z-index: -1;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
 }
 
 .navbar-inverse .navbar-brand {
@@ -34,7 +48,6 @@ body {
 
 .navbar-inverse .navbar-brand:hover {
     color: #f739a1;
-    text-shadow: #f739a1;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -50,7 +63,6 @@ body {
 .navbar-inverse .navbar-nav > li > a:hover {
     background: none;
     color: #56226f;
-    text-shadow: 0 0 1px #bb33d0;
 }
 
 .footer {
@@ -203,4 +215,39 @@ a.desc:after {
 
 .image_item:hover img {
     opacity: 0.5;
+}
+
+.flower_table > thead > tr > th,
+.flower_table > tbody > tr > td:first-child,
+.flower_table > tbody > tr > td:nth-child(2),
+.flower_table > tbody > tr > td:last-child{
+    text-align: center;
+}
+
+.flower_table > tbody > tr > td:last-child a:nth-child(2) {
+    margin: 0 15px;
+}
+
+.flower_table > tbody > tr > td:nth-child(2) img{
+    margin: -8px;
+}
+
+.flower_table > tbody > tr > td:nth-child(1) {
+    width: 50px;
+}
+
+.flower_table > tbody > tr > td:nth-child(2) {
+    width: 200px;
+}
+
+.flower_table > tbody > tr > td:nth-child(3) {
+    width: 250px;
+}
+
+.flower_table > tbody > tr > td:nth-child(5) {
+    width: 170px;
+}
+
+.flower_table > tbody > tr > td:nth-child(6) {
+    width: 100px;
 }
