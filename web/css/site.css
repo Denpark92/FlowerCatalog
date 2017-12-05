@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 html,
 body {
     height: 100%;
+    font-family: Roboto, sans-serif;
 }
 
 .wrap {
@@ -12,6 +15,42 @@ body {
 
 .wrap > .container {
     padding: 70px 15px 20px;
+}
+
+.navbar-inverse {
+    background: url('/css/image/nav_bg.jpeg');
+    background-position: 0 -51%;
+    background-size: 100% auto;
+    border-bottom: 1px solid #521c69;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    color: #f739a1;
+    text-shadow: #f739a1;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > li > a:hover {
+    background: none;
+    color: #56226f;
+    text-shadow: 0 0 1px #bb33d0;
 }
 
 .footer {
@@ -124,10 +163,10 @@ a.desc:after {
     top: 50%;
     left: 50%;
     margin: -40px 0 0 -40px;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
 }
 
 .image_item a.btn-success,
@@ -137,10 +176,10 @@ a.desc:after {
     top: 50%;
     left: 50%;
     margin: 6px 0 0 -68px;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
 }
 .image_item a.btn-primary {
     margin: 6px 0 0 -71px;
@@ -152,10 +191,10 @@ a.desc:after {
 
 .image_item img {
     box-sizing: border-box;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
 }
 
 .image_item.main_image img {

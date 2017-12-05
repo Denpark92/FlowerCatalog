@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
         foreach ($images as $image) {
     ?>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a href="<?= '/web/upload/catalog/' . $image ?>" rel="gallery">
+                <a href="<?= '/upload/catalog/' . $image ?>" rel="gallery">
                 <?= Html::img('@web/upload/catalog/' . $image, ['style' => 'max-width: 100%']); ?>
                 </a>
             </div>
