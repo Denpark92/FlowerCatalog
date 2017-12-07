@@ -5,6 +5,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule . index.php
-
-RewriteCond %{REQUEST_URI} ^/flower/index$
-RewriteRule ^.*$ /? [R=301,L]

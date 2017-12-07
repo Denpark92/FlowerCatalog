@@ -60,6 +60,7 @@ use app\models\FlowerImage;
     <?php $flowerImage = new FlowerImage(); ?>
     <?= $form->field($flowerImage, 'path[]')->fileInput(['multiple' => true]); ?>
 
+    <?= Html::a('Отменить', ['flower/view', 'id' => $model->id], ['class' => 'btn btn-primary']); ?>
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
 
     <?php ActiveForm::end(); ?>
