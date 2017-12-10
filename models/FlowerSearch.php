@@ -41,13 +41,15 @@ class FlowerSearch extends Flower
      */
     public function search($params)
     {
-        $query = Flower::find()->with(['genus', 'flowerImages']);
+        $query = Flower::find()->with(['genus', 'flowerImages'])->orderBy('name');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+		
+		$dataProvider->pagination = false;
 
         $this->load($params);
 
@@ -65,7 +67,7 @@ class FlowerSearch extends Flower
             'genus_id' => $this->genus_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', "$this->name%", false]);
 
         return $dataProvider;
     }

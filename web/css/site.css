@@ -4,6 +4,7 @@ html,
 body {
     height: 100%;
     font-family: Roboto, sans-serif;
+    background: url('/css/image/background.png');
 }
 
 .wrap {
@@ -14,7 +15,7 @@ body {
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+    padding: 10px 15px 20px;
 }
 
 .navbar-inverse {
@@ -217,6 +218,10 @@ a.desc:after {
     opacity: 0.5;
 }
 
+table {
+    background-color: #fff;
+}
+
 .flower_table > thead > tr > th,
 .flower_table > tbody > tr > td:first-child,
 .flower_table > tbody > tr > td:nth-child(2),
@@ -249,5 +254,23 @@ a.desc:after {
 }
 
 .flower_table > tbody > tr > td:nth-child(6) {
+    width: 100px;
+}
+
+.genus_table > thead > tr > th,
+.genus_table > tbody > tr > td:first-child,
+.genus_table > tbody > tr > td:last-child{
+    text-align: center;
+}
+
+.genus_table > tbody > tr > td:last-child a:nth-child(2) {
+    margin: 0 15px;
+}
+
+.genus_table > tbody > tr > td:nth-child(1) {
+    width: 50px;
+}
+
+.genus_table > tbody > tr > td:nth-child(3) {
     width: 100px;
 }
