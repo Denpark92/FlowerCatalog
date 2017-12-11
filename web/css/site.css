@@ -274,3 +274,26 @@ table {
 .genus_table > tbody > tr > td:nth-child(3) {
     width: 100px;
 }
+
+#toTop {
+    display: none;
+    position: fixed;
+    right:50px;
+    bottom: 50px;
+    width:50px;
+    height:50px;
+    cursor: pointer;
+}
+
+#toTop .top_arrow {
+    fill: currentColor;
+    color: #560c64;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+#toTop .top_arrow:hover {
+    color: #f3389d;
+}
