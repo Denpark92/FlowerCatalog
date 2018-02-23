@@ -2,10 +2,8 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Flower;
 
 /**
  * FlowerSearch represents the model behind the search form about `app\models\Flower`.
@@ -67,7 +65,7 @@ class FlowerSearch extends Flower
             'genus_id' => $this->genus_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', "$this->name%", false]);
+        $query->andFilterWhere(['like', 'name', "$this->name"]);
 
         return $dataProvider;
     }
