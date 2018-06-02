@@ -7,7 +7,6 @@ use app\models\Flower;
 use app\models\FlowerImage;
 use app\models\FlowerSearch;
 use app\models\Genus;
-use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
@@ -47,10 +46,13 @@ class FlowerController extends Controller
             $genusList[$genus->id] = $genus->name;
         }
 
+        $flowerAlphabet = Flower::findBySql('SELECT DISTINCT LEFT(name, 1) as name FROM flower ORDER BY name')->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'genusList' => $genusList,
+            'flowerAlphabet' => $flowerAlphabet
         ]);
     }
 
